@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday Shyma Sarah</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=Poppins:wght@300;400&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-dark: #2d0b1e; /* Deep Plum */
+            --accent-gold: #d4af37;  /* Metallic Gold */
+            --soft-cream: #fffaf0;   /* Ivory */
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: var(--primary-dark);
+            color: var(--soft-cream);
+            font-family: 'Poppins', sans-serif;
+            overflow-x: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            text-align: center;
+        }
+
+        .container {
+            position: relative;
+            z-index: 10;
+            padding: 20px;
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            background: rgba(45, 11, 30, 0.8);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+            max-width: 600px;
+        }
+
+        h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            color: var(--accent-gold);
+            margin-bottom: 10px;
+            letter-spacing: 2px;
+        }
+
+        .sub-text {
+            font-style: italic;
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            opacity: 0.9;
+        }
+
+        .message {
+            margin-top: 30px;
+            line-height: 1.8;
+            font-weight: 300;
+        }
+
+        .btn-reveal {
+            margin-top: 30px;
+            padding: 12px 30px;
+            background: transparent;
+            border: 2px solid var(--accent-gold);
+            color: var(--accent-gold);
+            cursor: pointer;
+            font-family: 'Poppins', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            transition: 0.3s;
+        }
+
+        .btn-reveal:hover {
+            background: var(--accent-gold);
+            color: var(--primary-dark);
+        }
+
+        /* Confetti Effect */
+        #canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+
+        /* Hidden Surprise */
+        #surprise {
+            display: none;
+            margin-top: 20px;
+            font-size: 1.2rem;
+            color: var(--accent-gold);
+            animation: fadeIn 2s;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+
+    <canvas id="canvas"></canvas>
+
+    <div class="container">
+        <p class="sub-text">To my wonderful sister</p>
+        <h1>Shyma Sarah</h1>
+        <div class="message">
+            <p>On your special day, I wish you a year filled with the same joy and light you bring into everyone's lives. May your path be as brilliant as your smile.</p>
+        </div>
+        <button class="btn-reveal" onclick="showSurprise()">Click for a Wish</button>
+        <div id="surprise">✨ May all your dreams come true this year! ✨</div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+    <script>
+        function showSurprise() {
+            // Reveal text
+            document.getElementById('surprise').style.display = 'block';
+            
+            // Fire premium gold and silver confetti
+            var end = Date.now() + (3 * 1000);
+            var colors = ['#d4af37', '#ffffff', '#f4e1d2'];
+
+            (function frame() {
+                confetti({
+                    particleCount: 3,
+                    angle: 60,
+                    spread: 55,
+                    origin: { x: 0 },
+                    colors: colors
+                });
+                confetti({
+                    particleCount: 3,
+                    angle: 120,
+                    spread: 55,
+                    origin: { x: 1 },
+                    colors: colors
+                });
+
+                if (Date.now() < end) {
+                    requestAnimationFrame(frame);
+                }
+            }());
+        }
+    </script>
+</body>
+</html>
